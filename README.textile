@@ -1,0 +1,35 @@
+h1. FormtasticImage
+
+An extension for Formtastic[1] to generate file inputs for paperclip[2] fields.
+
+h2. Example
+
+In the model class:
+
+<pre><code>class User < ActiveRecord::Base
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+end</code></pre>
+
+And in the view
+
+<pre><code><% semantic_form_for @user do |form| %>
+  <% form.inputs do %>
+    <%= form.input :avatar, :as => :image, :preview_size => :thumb %>
+  <% end %>
+<% end %></code></pre>
+
+h2. Dependencies
+
+You must have the formtastic gem/plugin and the paperclip gem/plugin added to your application.
+
+h2. Todo
+
+Test, test, test...
+
+h2. References
+
+fn1. "Formtastic @ GitHub":http://github.com/justinfrench/formtastic
+
+fn2. "Paperclip @ Github":http://github.com/thoughtbot/paperclip
+
+Copyright (c) 2009 Paul Smith, released under the MIT license
